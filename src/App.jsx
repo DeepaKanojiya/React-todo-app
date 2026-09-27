@@ -44,9 +44,9 @@ function App() {
 
   const deleteHandler = (idx) => {
     let copyUser = [...userData];
-    let deletedData = copyUser.splice(idx, 1);
-    setUserData(deletedData);
-    localStorage.setItem("userData", JSON.stringify(deletedData));
+    copyUser.splice(idx, 1);
+    setUserData(copyUser);
+    localStorage.setItem("userData", JSON.stringify(copyUser));
   };
 
   return (
@@ -85,6 +85,7 @@ function App() {
             onChange={(e) => {
               setCoverProfile(e.target.value);
             }}
+            required
             type="url"
             className="outline-none w-full sm:w-[45%] lg:w-[30%] bg-[#f5f5f5] text-black py-3 sm:py-4 px-4 text-base sm:text-lg rounded-2xl"
             placeholder="Image cover profile"
@@ -94,6 +95,7 @@ function App() {
             onChange={(e) => {
               setProfileImage(e.target.value);
             }}
+            required
             type="url"
             className="outline-none w-full sm:w-[45%] lg:w-[30%] bg-[#f5f5f5] text-black py-3 sm:py-4 px-4 text-base sm:text-lg rounded-2xl"
             placeholder="Image profile"
@@ -104,6 +106,7 @@ function App() {
             onChange={(e) => {
               setUserName(e.target.value);
             }}
+            required
             type="text"
             className="outline-none w-full sm:w-[45%] lg:w-[30%] bg-[#f5f5f5] text-black py-3 sm:py-4 px-4 text-base sm:text-lg rounded-2xl"
             placeholder="Enter user name"
@@ -113,6 +116,7 @@ function App() {
             onChange={(e) => {
               setDescription(e.target.value);
             }}
+            required
             type="text"
             className="outline-none w-full sm:w-[45%] lg:w-[30%] bg-[#f5f5f5] text-black py-3 sm:py-4 px-4 text-base sm:text-lg rounded-2xl"
             placeholder="Enter Description"
@@ -122,6 +126,7 @@ function App() {
             onChange={(e) => {
               setLikesCount(e.target.value);
             }}
+            required
             type="number"
             className="outline-none w-full sm:w-[45%] lg:w-[30%] bg-[#f5f5f5] text-black py-3 sm:py-4 px-4 text-base sm:text-lg rounded-2xl"
             placeholder="Enter likes number"
@@ -131,6 +136,7 @@ function App() {
             onChange={(e) => {
               setPostCount(e.target.value);
             }}
+            required
             type="number"
             className="outline-none w-full sm:w-[45%] lg:w-[30%] bg-[#f5f5f5] text-black py-3 sm:py-4 px-4 text-base sm:text-lg rounded-2xl"
             placeholder="Enter Post Number"
@@ -140,6 +146,7 @@ function App() {
             onChange={(e) => {
               setViewsCount(e.target.value);
             }}
+            required
             type="number"
             className="outline-none w-full sm:w-[45%] lg:w-[30%] bg-[#f5f5f5] text-black py-3 sm:py-4 px-4 text-base sm:text-lg rounded-2xl"
             placeholder="Enter Views Number"
@@ -212,7 +219,7 @@ function App() {
               </div>
               <div className=" flex  flex-col jutify-center item-center">
                 <button
-                  onClick={(idx) => {
+                  onClick={() => {
                     deleteHandler(idx);
                   }}
                   className=" active:scale-95 py-2 px-4 bg-red-700 text-2xl cursor-pointer rounded-2xl text-center"
